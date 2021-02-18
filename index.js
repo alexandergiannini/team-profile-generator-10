@@ -1,5 +1,9 @@
 const fs = require('fs')
 const inquirer = require('inquirer')
+const Employee = require('./lib/Employee')
+const Manager = require('./lib/Manager')
+const Engineer = require('./lib/Engineer')
+const Intern = require('./lib/Intern')
 
 const writeToHTML = (managerName, managerId, managerEmail, managerOfficeNumber) => {
     return `
@@ -9,21 +13,22 @@ const writeToHTML = (managerName, managerId, managerEmail, managerOfficeNumber) 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Team Profile Generator</title>
 </head>
 <body>
     <header class="my-team-banner">
-        <h1>
+        <h1 class="my-team-text">
             My Team
         </h1>
     </header>
-    <section class="my-team-body">
+    <section id="manager-section" class="employee-section">
         <h2 class="manager-name">
-        ${managerName}
+        Manager: ${managerName}
         </h2>
-        <p class="manager-id">${managerId}</p>
-        <p class="manager-email">${managerEmail}</p>
-        <p class="manager-office-number">${managerOfficeNumber}</p>
+        <p class="manager-id">ID: ${managerId}</p>
+        <p class="manager-email">Email: ${managerEmail}</p>
+        <p class="manager-office-number">Office Number: ${managerOfficeNumber}</p>
     </section>
     
 </body>
