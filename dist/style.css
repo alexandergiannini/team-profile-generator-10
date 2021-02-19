@@ -8,3 +8,14 @@
     font-size: 40px;
     color: white;
 }
+
+
+#manager-container {
+    padding-right: 700px;
+    padding-top: 100px;
+}
+
+#manager-row {
+    border-color: black;
+    border: 2px solid;
+}
