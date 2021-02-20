@@ -18,9 +18,9 @@ const renderEmployees = () => {
 
             myEmployeeList += 
 
-            `<section id="manager-section" class="employee-section">
-        <div class="container" id="manager-container">
-            <div class="row" id="manager-row">
+            `<section id="manager-section" class="engineer-section">
+        <div class="container" id="engineer-container">
+            <div class="row" id="engineer-row">
 
                 <div class="col">
 
@@ -28,8 +28,8 @@ const renderEmployees = () => {
                 Engineer: ${employeeList[i].getName()}
                 </h2>
                 <p class="manager-id">ID: ${employeeList[i].getId()}</p>
-                <a class="manager-email" href="mailto:${employeeList[i].getEmail()}">Email: ${employeeList[i].getEmail()}</a>
-                <p class="manager-office-number">Office Number: ${employeeList[i].getGithub()}</p>
+                <a class="engineer-email" href="mailto:${employeeList[i].getEmail()}">Email: ${employeeList[i].getEmail()}</a> <br>
+                <a class="engineer-github" href="https://github.com/${employeeList[i].getGithub()}" target="_blank">GitHub Username: ${employeeList[i].getGithub()}</a>
 
 
 
@@ -45,10 +45,35 @@ const renderEmployees = () => {
 
         } else if (employeeList[i].getRole() === 'Intern') {
 
+            myEmployeeList += 
+
+            `<section id="manager-section" class="intern-section">
+        <div class="container" id="manager-container">
+            <div class="row" id="manager-row">
+
+                <div class="col">
+
+                <h2 class="manager-name">
+                Intern: ${employeeList[i].getName()}
+                </h2>
+                <p class="manager-id">ID: ${employeeList[i].getId()}</p>
+                <a class="intern-email" href="mailto:${employeeList[i].getEmail()}">Email: ${employeeList[i].getEmail()}</a>
+                <p class="manager-office-number">School: ${employeeList[i].getSchool()}</p>
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+        
+    </section>`
+
         } else if (employeeList[i].getRole() === 'Manager') {
             myEmployeeList += 
 
-            `<section id="manager-section" class="employee-section">
+            `<section id="manager-section" class="manager-section">
         <div class="container" id="manager-container">
             <div class="row" id="manager-row">
 
@@ -280,7 +305,7 @@ const listMenu = () => {
             break;
     
             case "Add an Intern":
-            employeeList.push(new Intern (answers.internName, answers.internID, answers.InternEmail, answers.internSchool))
+            employeeList.push(new Intern (answers.internName, answers.internID, answers.internEmail, answers.internSchool))
             listMenu();
             break;
     

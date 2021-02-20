@@ -10,12 +10,60 @@
 }
 
 
+
 #manager-container {
-    padding-right: 700px;
-    padding-top: 100px;
+   /*padding-right: 700px;*/
+    /*padding-top: 50px;*/
+    text-align: center;
+    /*position: absolute;*/
+    background-color:greenyellow;
 }
 
 #manager-row {
     border-color: black;
     border: 2px solid;
+}
+
+#engineer-container {
+    /*padding-right: 700px;*/
+   /* padding-top: 220px; */
+    text-align: center;
+    background-color:greenyellow;
+    
+}
+
+#engineer-row {
+    border-color: black;
+    border: 2px solid;
+}
+
+.intern-section {
+    display: inline
+   /* padding-left: 500px;*/
+   /* padding-top: 400px; */
+}
+
+.manager-section {
+    display: block;
+    padding-top: 50px;
+}
+
+.engineer-section {
+    display: inline
+}
+
+.manager-email {
+    font-weight: bold;
+}
+
+.engineer-email {
+    font-weight: bold;
+}
+
+.engineer-github {
+    font-weight: bold;
+}
+
+.intern-email {
+    font-weight: bold;
 }
