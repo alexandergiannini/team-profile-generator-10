@@ -1,3 +1,5 @@
+/*all styles depending on the html file generated*/
+
 .my-team-banner {
     background-color: red;
     padding-bottom: 50px;
@@ -9,13 +11,8 @@
     color: white;
 }
 
-
-
 #manager-container {
-   /*padding-right: 700px;*/
-    /*padding-top: 50px;*/
     text-align: center;
-    /*position: absolute;*/
     background-color:greenyellow;
 }
 
@@ -25,11 +22,8 @@
 }
 
 #engineer-container {
-    /*padding-right: 700px;*/
-   /* padding-top: 220px; */
     text-align: center;
-    background-color:greenyellow;
-    
+    background-color:greenyellow;  
 }
 
 #engineer-row {
@@ -38,9 +32,7 @@
 }
 
 .intern-section {
-    display: inline
-   /* padding-left: 500px;*/
-   /* padding-top: 400px; */
+    display: inline;
 }
 
 .manager-section {
@@ -49,7 +41,7 @@
 }
 
 .engineer-section {
-    display: inline
+    display: inline;
 }
 
 .manager-email {

@@ -1,22 +1,22 @@
-const fs = require('fs')
-const inquirer = require('inquirer')
-const Employee = require('./lib/Employee')
-const Manager = require('./lib/Manager')
-const Engineer = require('./lib/Engineer')
-const Intern = require('./lib/Intern')
-const employeeList = []
+//Declaring global variables which use fs, inquirer, and classes from the lib folder
 
-///create function that loops thru employeelist, where we check the role of each employee 3 if statements for manager intern engineer; have a variable that holds the string/html that will be generate as we go through the loop
-//
+const fs = require('fs');
+const inquirer = require('inquirer');
+const Employee = require('./lib/Employee');
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+const employeeList = [];
 
+//function which displays HTML content based from user response
 const renderEmployees = () => {
-    let myEmployeeList = ''
+    let myEmployeeList = '';
 
     for (let i = 0; i < employeeList.length; i++ ) {
         if (employeeList[i].getRole() === 'Engineer') {
 
 
-            myEmployeeList += 
+            myEmployeeList +=
 
             `<section id="manager-section" class="engineer-section">
         <div class="container" id="engineer-container">
@@ -98,10 +98,10 @@ const renderEmployees = () => {
     </section>`
         }
     }
-    return myEmployeeList
+    return myEmployeeList;
 }
 
-
+///write to HTML function to use the renderEmployees function to display whole html content
 const writeToHTML = () => {
     return `
     <!DOCTYPE html>
@@ -131,10 +131,7 @@ const writeToHTML = () => {
 </html>`
 }
 
-//let myEng = new Engineer('Alexander', 2, 'alexgiannini310@gmail.com', 24, 'alexandergiannini')
-//console.log(myEng)
-//myEng.getName()
-
+///function that prompts the manager questions
 const promptManager = () => {
     return inquirer.prompt([
         {
@@ -190,46 +187,16 @@ const promptManager = () => {
             }
         }
         },
-        
-
-
-        
-        
-
     ])
 } 
-
+////prompt user function used for user response to the list menu, and engineer/intern questions
 const promptUser = () => {
     return inquirer.prompt([
-        
-        
-
-
         {
-        type: 'list', ///'list'
+        type: 'list', 
         name: 'menuOption',
         message: 'Would you like to add an engineer, an intern, or are you finished building your team?',
         choices: ['Add an Engineer', 'Add an Intern', 'Finished Building'],
-        //validate: myMenuOption => {
-
-
-        //    if (myMenuOption === "Add an Engineer" || myMenuOption === 'add an engineer') {
-             //   return true
-               
-                
-          //  } else if (myMenuOption === "Add an Intern" || myMenuOption === "add an intern") {
-              //  return true
-          //  } else if (myMenuOption === 'Finished Building' || myMenuOption === 'finished building') {
-             //   return true
-           // } else {
-              //  console.log('Please input an appropriate answer.')
-             //   return false
-           // }
-            
-        //}
-         
-
-
         },
         {
         type: 'input',
@@ -278,61 +245,36 @@ const promptUser = () => {
         name: 'internSchool',
         message: 'What is the school of the intern?',
         when: (data) => data.menuOption === 'Add an Intern'
-        },
-        
-
+        }, 
     ])
 }
-
-
-
-
-
-
-
+///pushing all the data from the prompt manager function, then list menu is called
 promptManager().then(managerAnswers => {
-    employeeList.push(new Manager (managerAnswers.managerName, managerAnswers.managerId, managerAnswers.managerEmail, managerAnswers.managerOfficeNumber))
-    listMenu()
+    employeeList.push(new Manager (managerAnswers.managerName, managerAnswers.managerId, managerAnswers.managerEmail, managerAnswers.managerOfficeNumber));
+    listMenu();
     
 })
 
+////list menu function used to push intern/engineer data to an array, then uses list menu function to display the list again. Then writes the HTML document
 const listMenu = () => {
     promptUser().then(answers => {
         switch(answers.menuOption) {
             case "Add an Engineer":
-            employeeList.push(new Engineer(answers.engineerName, answers.engineerID, answers.engineerEmail, answers.engineerGithub))
+            employeeList.push(new Engineer(answers.engineerName, answers.engineerID, answers.engineerEmail, answers.engineerGithub));
             listMenu();
             break;
     
             case "Add an Intern":
-            employeeList.push(new Intern (answers.internName, answers.internID, answers.internEmail, answers.internSchool))
+            employeeList.push(new Intern (answers.internName, answers.internID, answers.internEmail, answers.internSchool));
             listMenu();
             break;
     
             case "Finished Building":
             fs.writeFile('./dist/index.html', writeToHTML(), err => {
                 if (err) {
-                    throw err
+                    throw err;
                 }
             })
         }
     })
 }
-
-
-//console.log(answers))
-//promptUser().then(answers => fs.writeFile('./dist/index.html', writeToHTML(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber), err => {
-  //  if (err) {
-    //    throw err;
-    //}
-//})
-
-//)
-  //.then(answers => console.log(answers));
-
-
-
-
-
-
-//console.log(inquirer)
