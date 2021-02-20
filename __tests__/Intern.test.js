@@ -15,10 +15,7 @@ test('test intern email', () => {
     expect(myInternEmail.email).toEqual(expect.any(String))
 })
 
-test('test intern office number', () => {
-    let myInternOffice = new Intern ('Brian', 10, 'Brian@gmail.com', 223, 'brian@github.com', 'UCLA')
-    expect(myInternOffice.officeNumber).toEqual(expect.any(Number))
-})
+
 
 test('test intern github', () => {
     let myInternGithub = new Intern ('Brian', 10, 'Brian@gmail.com', 223, 'brian@github.com', 'UCLA')
@@ -26,6 +23,6 @@ test('test intern github', () => {
 })
 
 test('test intern school', () => {
-    let myInternSchool = new Intern ('Brian', 10, 'Brian@gmail.com', 223, 'brian@github.com', 'UCLA')
+    let myInternSchool = new Intern ('Brian', 10, 'Brian@gmail.com', 'UCLA', 'brian@github.com',)
     expect(myInternSchool.school).toEqual(expect.any(String))
 })
